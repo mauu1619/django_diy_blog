@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}All Blogs{% endblock  %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'blog/list.css' %}">
+{% endblock %}
+
+{% block content %}
+    {% if blog_list %}
+    <h1>All Blogs</h1>
+        <ul>
+        {% for blog in blog_list %}
+            <li><a href="{% url "blog_detail" blog.id %}">{{ blog.title }}</a> ({{ blog.post_date }}) - <a href="{% url "blogger_detail" blog.author.id %}">{{ blog.author }}</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>There are no blogs yet.</p>
+    {% endif %}
+{% endblock  %}

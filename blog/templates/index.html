@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Blog Home{% endblock  %}
+
+{% block content %}
+    <h1>Blog Home Page</h1>    
+    <p>Welcome to <i>Blog</i>, a very basic site for sharing your minds, taking a feedback from
+    users and talking about all stuff in general</p>
+    <h2>Dynamic Content</h2>
+    <p>You can follow to our record counts, repeately updating:</p>
+
+    <ul>
+        <li><strong>Users: </strong>{{ bloggers_num }}</li>
+        <li><strong>Blogs: </strong>{{ blogs_num }}</li>
+        <li><strong>Comments: </strong>{{ comments_num }}</li>
+    </ul>
+
+    <h4>Make sure log in your account or registrate new and as soon as possible make your own blog!</h4>
+{% endblock  %}

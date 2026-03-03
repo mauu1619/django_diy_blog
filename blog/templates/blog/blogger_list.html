@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}All Bloggers{% endblock  %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'blog/list.css' %}">
+{% endblock %}
+
+{% block content %}
+    {% if blogger_list %}
+        <h1>All Bloggers</h1>
+        
+        <ul>
+            {% for blogger in blogger_list %}
+                <li><a href="{% url "blogger_detail" blogger.id %}">{{ blogger.user.username }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>There are no bloggers yet.</p>    
+    {% endif %}
+{% endblock  %}

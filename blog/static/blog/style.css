@@ -1,0 +1,34 @@
+ body {
+    display: flex;
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+/* Боковая панель */
+nav {
+    width: 150px;
+    border-right: 1px solid #ccc;
+    padding-right: 20px;
+}
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+nav li {
+    margin-bottom: 5px;
+}
+nav a {
+    color: #1a73e8;
+    text-decoration: none;
+}
+.user-info {
+    margin-top: 30px;
+}
+/* Основной контент */
+main {
+    flex-grow: 1;
+    padding-left: 40px;
+}
+.pagination {
+    margin-top: 20px;
+    color: #555;
+}

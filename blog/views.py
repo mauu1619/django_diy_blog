@@ -9,6 +9,7 @@ from django.views.generic.edit import CreateView
 from django.urls import reverse
 
 from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
+from django.contrib.auth.models import Group
 
 # Create your views here.
 def index(request):
@@ -68,6 +69,9 @@ def register(request):
             user = user_form.save(commit=False)
             user.set_password(user_form.cleaned_data['password'])
             user.save()
+            
+            group = Group.objects.get(name="Default Users")
+            user.groups.add(group)
 
             profile = profile_form.save(commit=False)
             profile.user = user

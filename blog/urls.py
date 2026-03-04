@@ -18,3 +18,7 @@ urlpatterns.extend([
     path('<pk>/create', views.CommentCreate.as_view(), name='comment_create'),
     path('accounts/register', views.register, name='register')
 ])
+
+urlpatterns.append(
+    path('create', views.BlogCreate.as_view(), name='blog_create')
+)

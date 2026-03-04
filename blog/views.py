@@ -8,7 +8,7 @@ from django.views import generic
 from django.views.generic.edit import CreateView
 from django.urls import reverse
 
-from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
 
 # Create your views here.
 def index(request):
@@ -87,3 +87,14 @@ def register(request):
             'profile_form': profile_form,
         }
     )
+
+class BlogCreate(LoginRequiredMixin, CreateView):
+    model = Blog
+    fields = ['title', 'description']
+
+    def form_valid(self, form):
+        form.instance.post_date = timezone.now()
+        form.instance.author = Blogger.objects.get(user=self.request.user)
+
+        return super().form_valid(form)
+    
